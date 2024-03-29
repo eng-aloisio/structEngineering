@@ -1,4 +1,4 @@
-from auxiliar import section_data, section_list
+from auxiliar import profile_data, profile_list
 import math
 
 
@@ -10,7 +10,7 @@ def flt(product, profile, fy, lb, cb):
 
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
-    lp = section_data(product, profile)
+    lp = profile_data(product, profile)
 
     mp = lp[12] * fy
     lamb = lb / lp[15]
@@ -41,7 +41,7 @@ def flm(product, profile, fy):
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = section_data(product, profile)
+    lp = profile_data(product, profile)
     mp = lp[12] * fy
 
     lamb = (lp[3] / 2) / lp[5]
@@ -71,7 +71,7 @@ def fla(product, profile, fy):
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = section_data(product, profile)
+    lp = profile_data(product, profile)
     mp = lp[12] * fy
 
     lamb = (lp[6] / 2) / lp[4]
@@ -120,10 +120,17 @@ def bending_verif(product, profile, fy, lb, cb, mD):
 
 def process_dataset(product, fy, lb, cb, mD):
     
-    profileList = section_list(product)
+    profileList = profile_list(product)
 
     return profileList
 
 
-print(process_dataset('Laminados', 25, 300, 1, 7000))
+
+
+
+
+
+#TESTES
+
+#print(process_dataset('Laminados', 25, 300, 1, 7000))
 
