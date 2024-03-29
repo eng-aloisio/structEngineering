@@ -1,4 +1,4 @@
-from auxiliar import dados_perfis
+from auxiliar import profile_data
 import math
 
 # FLT necessita de verificação manual para confirmar resultados
@@ -8,7 +8,7 @@ def flt(product, bitola, fy, lb, cb):
 
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
-    lp = dados_perfis(product, bitola)
+    lp = profile_data(product, bitola)
 
     mp = lp[12] * fy
     lamb = lb / lp[15]
@@ -41,7 +41,7 @@ def flm(product, bitola, fy):
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = dados_perfis(product, bitola)
+    lp = profile_data(product, bitola)
     mp = lp[12] * fy
 
     lamb = (lp[3] / 2) / lp[5]
@@ -73,7 +73,7 @@ def fla(product, bitola, fy):
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = dados_perfis(product, bitola)
+    lp = profile_data(product, bitola)
     mp = lp[12] * fy
 
     lamb = (lp[6] / 2) / lp[4]
