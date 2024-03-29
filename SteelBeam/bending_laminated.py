@@ -1,5 +1,6 @@
 from auxiliar import profile_data, profile_list
 import math
+import pandas as pd
 
 
 
@@ -124,11 +125,18 @@ def process_dataset(product, fy, lb, cb, mD):
 
     results = []
 
-    for profile in profileList:
-        results.append(bending_verif(product, profile, fy, lb, cb, mD))
+    for i in range(len(profileList)):
+        print(f'{round((i / len(profileList)) * 100, 0)}%')
+        results.append(bending_verif(product, profileList[i], fy, lb, cb, mD))
 
+    final_results = {
+        'Bitola': profileList,
+        'Resultados': results
+    }
 
-    return results
+    df = pd.DataFrame(final_results)
+
+    return df
 
 
 
@@ -138,5 +146,5 @@ def process_dataset(product, fy, lb, cb, mD):
 
 #TESTES
 
-#print(process_dataset('Laminados', 25, 300, 1, 7000))
+print(process_dataset('Laminados', 25, 300, 1, 7000))
 
