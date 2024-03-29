@@ -122,7 +122,13 @@ def process_dataset(product, fy, lb, cb, mD):
     
     profileList = profile_list(product)
 
-    return profileList
+    results = []
+
+    for profile in profileList:
+        results.append(bending_verif(product, profile, fy, lb, cb, mD))
+
+
+    return results
 
 
 
@@ -132,5 +138,5 @@ def process_dataset(product, fy, lb, cb, mD):
 
 #TESTES
 
-#print(process_dataset('Laminados', 25, 300, 1, 7000))
+print(process_dataset('Laminados', 25, 300, 1, 7000))
 
