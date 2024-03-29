@@ -1,6 +1,5 @@
 from auxiliar import dados_perfis
 import math
-from itertools import product
 
 # FLT necessita de verificação manual para confirmar resultados
 def flt(product, bitola, fy, lb, cb):
