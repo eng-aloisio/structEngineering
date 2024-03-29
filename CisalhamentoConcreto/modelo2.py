@@ -37,14 +37,12 @@ class DimCisalhamento_mod2:
 
         return round(vRd2, 2)
     
-
     def calcAsw_min(self):
 
         asw_min = (20 * self.fctm * self.b) / (self.fywk / 10)
 
         return round(asw_min, 2)
     
-
     def calc_vc(self):
 
         vc0 = 0.6 * self.fctd * self.b * self.d
@@ -58,7 +56,6 @@ class DimCisalhamento_mod2:
 
         return round(vc, 2)
 
-
     def calc_vsw(self):
 
         vsw = self.vd - self.calc_vc()
@@ -69,13 +66,11 @@ class DimCisalhamento_mod2:
         
         return round(vsw, 2)
     
-
     def calcAsw_s(self):
 
         asw_s = (self.calc_vsw() / (0.9 * self.d * self.fywd * (cot(self.alfa) + cot(self.teta)) * math.sin(self.alfa))) * 100
       
         return round(asw_s, 2)
-
 
     def calcEfetivo(self):
           
@@ -86,7 +81,6 @@ class DimCisalhamento_mod2:
             asw_efe = self.calcAsw_s()
 
         return round(asw_efe, 2)
-
 
     def resultados(self):
 
@@ -99,7 +93,6 @@ class DimCisalhamento_mod2:
             'Asw,mín (cm²/m)': [self.calcAsw_min()],
             'Asw,calc (cm²/m)': [self.calcAsw_s()],
             'Asw,efetivo (cm²/m)': [self.calcEfetivo()]
-
         }
 
         df_results = pd.DataFrame(resultados)
