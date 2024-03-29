@@ -105,9 +105,19 @@ def mom_verification(product, bitola, fy, lb, cb, mD):
     mRdx_min = min(mRdx_list)
 
     efic = (mD / mRdx_min) * 100
+    efic_flt = (mD / mRdx_flt) * 100
+    efic_flm = (mD / mRdx_flm) * 100
+    efic_fla = (mD / mRdx_fla) * 100
 
+    if efic <= 100:
+        msg = 'Perfil aprovado'
+    
+    else:
+        msg = 'Perfil reprovado'
 
-    return efic
+    export_results = [efic, efic_flt, efic_flm, efic_fla, msg]
+
+    return export_results
 
 
 

@@ -1,7 +1,7 @@
 import pandas as pd
 
 def table_steel(product):
-    path = './tabelas.xlsx'
+    path = './SteelBeam/tabelas.xlsx'
     return pd.read_excel(path, sheet_name = product)
     
 
