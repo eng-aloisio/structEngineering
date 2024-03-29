@@ -5,9 +5,9 @@ def table_steel(product):
     return pd.read_excel(path, sheet_name = product)
     
 
-def profile_data(product, profile):
+def section_data(product, section):
     df = table_steel(product)
-    filter = profile
+    filter = section
 
     df_select = df.loc[df.iloc[:,0] == filter]
     param_list = df_select.iloc[0].tolist()
@@ -15,7 +15,7 @@ def profile_data(product, profile):
     return param_list
 
 
-def lista_bitolas(product):
+def section_list(product):
     df = table_steel(product)
 
     df_list = df.iloc[:,0].tolist()
@@ -23,4 +23,3 @@ def lista_bitolas(product):
     return df_list
 
 
-   

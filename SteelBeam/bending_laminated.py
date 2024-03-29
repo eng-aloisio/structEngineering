@@ -1,14 +1,16 @@
-from auxiliar import profile_data
+from auxiliar import section_data, section_list
 import math
 
+
+
 # FLT necessita de verificação manual para confirmar resultados
-def flt(product, bitola, fy, lb, cb):
+def flt(product, profile, fy, lb, cb):
     # fy = kN/cm²
     # E = kN/cm²
 
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
-    lp = profile_data(product, bitola)
+    lp = section_data(product, profile)
 
     mp = lp[12] * fy
     lamb = lb / lp[15]
@@ -34,14 +36,12 @@ def flt(product, bitola, fy, lb, cb):
 
 
 # FLM necessita de verificação manual para confirmar resultados
-def flm(product, bitola, fy):
-    #fy = kN/cm²
-    #E = kN/cm²
-
+def flm(product, profile, fy):
+  
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = profile_data(product, bitola)
+    lp = section_data(product, profile)
     mp = lp[12] * fy
 
     lamb = (lp[3] / 2) / lp[5]
@@ -66,14 +66,12 @@ def flm(product, bitola, fy):
 
 
 # FLM necessita de verificação manual para confirmar resultados
-def fla(product, bitola, fy):
-    #fy = kN/cm²
-    #E = kN/cm²
-
+def fla(product, profile, fy):
+   
     modE = 20000 # Verificar necessidade de modificação antes de utilizar
     ya1 = 1.1
 
-    lp = profile_data(product, bitola)
+    lp = section_data(product, profile)
     mp = lp[12] * fy
 
     lamb = (lp[6] / 2) / lp[4]
@@ -95,11 +93,11 @@ def fla(product, bitola, fy):
     return mRdx_fla
 
 
-def mom_verification(product, bitola, fy, lb, cb, mD):
+def bending_verif(product, profile, fy, lb, cb, mD):
 
-    mRdx_flt = flt(product, bitola, fy, lb, cb)
-    mRdx_flm = flm(product, bitola, fy)
-    mRdx_fla = fla(product, bitola, fy)
+    mRdx_flt = flt(product, profile, fy, lb, cb)
+    mRdx_flm = flm(product, profile, fy)
+    mRdx_fla = fla(product, profile, fy)
 
     mRdx_list = [mRdx_flt, mRdx_flm, mRdx_fla]
     mRdx_min = min(mRdx_list)
@@ -120,6 +118,12 @@ def mom_verification(product, bitola, fy, lb, cb, mD):
     return export_results
 
 
+def process_dataset(product, fy, lb, cb, mD):
+    
+    profileList = section_list(product)
 
-print(mom_verification('Laminados', 'W 310 x 23,8', 25, 300, 1, 7000))
+    return profileList
+
+
+print(process_dataset('Laminados', 25, 300, 1, 7000))
 
