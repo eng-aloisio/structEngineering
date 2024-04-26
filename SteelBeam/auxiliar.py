@@ -1,7 +1,7 @@
 import pandas as pd
 
 def table_steel(product):
-    path = './SteelBeam/tabelas.xlsx'
+    path = '.tabelas.xlsx'
     return pd.read_excel(path, sheet_name = product)
     
 
@@ -23,3 +23,10 @@ def profile_list(product):
     return df_list
 
 
+def area_quadrado(lado):
+    area = lado ** 2
+
+    return area
+
+
+print(table_steel('Laminados'))
